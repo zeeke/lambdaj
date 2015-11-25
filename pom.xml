@@ -3,7 +3,7 @@
   <modelVersion>4.0.0</modelVersion>
   <groupId>com.googlecode.lambdaj</groupId>
   <artifactId>lambdaj</artifactId>
-  <version>2.4.1-SNAPSHOT</version>
+  <version>9.0-tgk</version>
   <name>lambdaj</name>
   <packaging>jar</packaging>
   <description>The pseudo-functional collection manipulation library</description>
@@ -130,6 +130,35 @@
             </goals>
           </execution>
         </executions>
+      </plugin>
+      <plugin>
+          <groupId>org.apache.maven.plugins</groupId>
+          <artifactId>maven-shade-plugin</artifactId>
+          <version>2.4.2</version>
+          <configuration>
+              <relocations>
+                  <relocation>
+                      <pattern>net.sf.cglib</pattern>
+                      <shadedPattern>com.tagetik.repackage.net.sf.cglib</shadedPattern>
+                  </relocation>
+                  <relocation>
+                      <pattern>org.hamcrest</pattern>
+                      <shadedPattern>com.tagetik.repackage.org.hamcrest</shadedPattern>
+                  </relocation>
+                  <relocation>
+                      <pattern>org.objenesis</pattern>
+                      <shadedPattern>com.tagetik.repackage.org.objenesis</shadedPattern>
+                  </relocation>
+              </relocations>
+          </configuration>
+          <executions>
+              <execution>
+                  <phase>package</phase>
+                  <goals>
+                      <goal>shade</goal>
+                  </goals>
+              </execution>
+          </executions>
       </plugin>
     </plugins>
   </build>
