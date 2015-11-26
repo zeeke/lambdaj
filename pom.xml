@@ -35,7 +35,7 @@
     <dependency>
       <groupId>org.hamcrest</groupId>
       <artifactId>hamcrest-library</artifactId>
-      <version>1.2.1</version>
+      <version>1.3</version>
     </dependency>
     <dependency>
       <groupId>org.objenesis</groupId>
@@ -142,14 +142,15 @@
                       <shadedPattern>com.tagetik.repackage.net.sf.cglib</shadedPattern>
                   </relocation>
                   <relocation>
-                      <pattern>org.hamcrest</pattern>
-                      <shadedPattern>com.tagetik.repackage.org.hamcrest</shadedPattern>
-                  </relocation>
-                  <relocation>
                       <pattern>org.objenesis</pattern>
                       <shadedPattern>com.tagetik.repackage.org.objenesis</shadedPattern>
                   </relocation>
               </relocations>
+              <artifactSet>
+                  <excludes>
+                      <exclude>org.hamcrest</exclude>
+                  </excludes>
+              </artifactSet>
           </configuration>
           <executions>
               <execution>
